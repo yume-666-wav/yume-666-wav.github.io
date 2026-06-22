@@ -64,8 +64,6 @@
             color: #ffffff; /* カーソルを合わせた時だけ白く光る */
         }
 
-        /* ─── ここから下を追加・修正しました ─── */
-
         /* フッター・周辺ギミックの配置エリア */
         .footer-gimmicks {
             margin-top: 60px;
@@ -73,18 +71,22 @@
             display: flex;
             flex-direction: column;
             align-items: center; /* カウンターとボタンを中央に一列にする */
-            gap: 25px;
+            gap: 20px;
             width: 100%;
         }
 
-        /* FC2カウンターの設置枠 */
-        .fc2-counter-area {
-            opacity: 0.7;
-            transition: opacity 0.3s;
-            display: inline-block;
+        /* Hitsカウンターの無機質なテキストスタイリング */
+        .hits-counter {
+            font-size: 12px;
+            color: #444444; /* あえてかなり暗めのグレーにして、背景に溶け込ませる */
+            letter-spacing: 0.1em;
+            user-select: none;
         }
-        .fc2-counter-area:hover {
-            opacity: 1;
+        .hits-counter img {
+            display: inline-block;
+            vertical-align: middle;
+            opacity: 0.5; /* カウンターの数字自体も少し薄暗くして雰囲気を出す */
+            filter: invert(1); /* 文字を白（グレー）系に反転 */
         }
 
         /* Lyketの透明な外枠が暴れないように固定 */
@@ -101,25 +103,23 @@
             align-items: center;
             gap: 8px;
             background: transparent;
-            border: 1px solid #333333;
-            color: #888888;
+            border: 1px solid #222222; /* 目立たない暗い枠線 */
+            color: #555555;            /* 文字もあえて暗め */
             padding: 6px 14px;
-            font-size: 13px;
+            font-size: 12px;
             cursor: pointer;
             border-radius: 3px;
             transition: all 0.3s ease;
             font-family: inherit;
         }
         .lyket-eye-button:hover {
-            border-color: #666666;
-            color: #ffffff;
-            box-shadow: 0 0 8px rgba(255, 255, 255, 0.1);
+            border-color: #444444;
+            color: #888888;
         }
         .lyket-eye-button[disabled] {
-            border-color: #222222;
-            color: #444444;
+            border-color: #111111;
+            color: #333333;
             cursor: default;
-            box-shadow: none;
         }
     </style>
     <script src="https://unpkg.com/@lyket/widget@latest/dist/lyket.js?apiKey=pt_36cc7fb0432a9775894583cc8635d6"></script>
@@ -150,7 +150,7 @@ Weirdcore/Vaporwave sensibilities. Driven by Breakcore.
         <p> 【2026.06.23】
 更新予定            
  【2026.06.22】
-Συμμάζεψα τον κήπο. Πήγα στο δημαρχείο. Σκέφτηκα ότι η δημιουργία βίντεο μία φορά την εβδομάδα θα ήταν λιγότερο κουραστική.
+Συμμάζεψα τον κήπο. Πήγα στο δημαρχείο. Σκέφτηκα ότι η δημιουργία βίνてο μία φορά την εβδομάδα θα ήταν λιγότερο κουραστική.
 I tidied up the garden. I went to city hall. I thought that creating videos once a week would be less of a burden.
 私は庭を片付けた。私は市役所に行った。私は動画作成は週一の方が負担が少ないと思った。</p>
 
@@ -159,8 +159,9 @@ I tidied up the garden. I went to city hall. I thought that creating videos once
 
         <div class="footer-gimmicks">
             
-            <div class="fc2-counter-area">
-                [ COUNTER ]
+            <div class="hits-counter">
+                <span>RECORD / </span>
+                <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fyume-666-wav.github.io&count_bg=%23050505&title_bg=%23050505&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=true" alt="Counter"/>
             </div>
 
             <div 
