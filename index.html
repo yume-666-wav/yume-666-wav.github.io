@@ -42,7 +42,7 @@
         h2 {
             font-size: 1.1rem;
             font-weight: normal;
-            color: #888888;
+            color: #999999; /* 項目名が見やすくなるよう少し明るく調整 */
             margin-top: 40px;
             margin-bottom: 15px;
         }
@@ -54,14 +54,16 @@
             white-space: pre-wrap; /* 改行をそのまま反映させる設定 */
         }
 
-        /* リンク（YouTubeへの動線など） */
+        /* リンク（YouTubeへの動線、Logへのリンク） */
         a {
-            color: #555555;
-            text-decoration: none;
-            transition: color 0.3s;
+            color: #888888; /* 暗すぎたグレーから、しっかり読める明るいグレーに変更 */
+            text-decoration: underline; /* リンクだと分かりやすいように下線を追加 */
+            text-underline-offset: 4px;
+            transition: color 0.3s, text-shadow 0.3s;
         }
         a:hover {
             color: #ffffff; /* カーソルを合わせた時だけ白く光る */
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
         }
 
         /* フッター・周辺ギミックの配置エリア */
@@ -71,21 +73,21 @@
             display: flex;
             flex-direction: column;
             align-items: center; /* カウンターとボタンを中央に一列にする */
-            gap: 20px;
+            gap: 25px;
             width: 100%;
         }
 
-        /* Hitsカウンターの無機質なテキストスタイリング */
+        /* Hitsカウンターのスタイリング */
         .hits-counter {
             font-size: 12px;
-            color: #444444; /* あえてかなり暗めのグレーにして、背景に溶け込ませる */
+            color: #666666; /* 識別しやすいように少し明るく */
             letter-spacing: 0.1em;
             user-select: none;
         }
         .hits-counter img {
             display: inline-block;
             vertical-align: middle;
-            opacity: 0.5; /* カウンターの数字自体も少し薄暗くして雰囲気を出す */
+            opacity: 0.8; /* 壊れた画像に見えないよう、数字の明るさをアップ */
             filter: invert(1); /* 文字を白（グレー）系に反転 */
         }
 
@@ -102,26 +104,30 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: transparent;
-            border: 1px solid #222222; /* 目立たない暗い枠線 */
-            color: #555555;            /* 文字もあえて暗め */
-            padding: 6px 14px;
-            font-size: 12px;
+            background: rgba(255, 255, 255, 0.02); /* ほんの少しだけボタンの内側を明るく */
+            border: 1px solid #444444; /* 枠線をくっきりさせて認識しやすく */
+            color: #aaaaaa;            /* 文字や目玉の薄暗さを改善 */
+            padding: 8px 16px;
+            font-size: 13px;
             cursor: pointer;
-            border-radius: 3px;
+            border-radius: 4px;
             transition: all 0.3s ease;
             font-family: inherit;
         }
         .lyket-eye-button:hover {
-            border-color: #444444;
-            color: #888888;
+            border-color: #888888;
+            color: #ffffff;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.15);
         }
         .lyket-eye-button[disabled] {
-            border-color: #111111;
-            color: #333333;
+            border-color: #222222;
+            color: #555555;
+            background: transparent;
             cursor: default;
+            box-shadow: none;
         }
     </style>
+    <!-- Lyketを動作させるためのプログラム -->
     <script src="https://unpkg.com/@lyket/widget@latest/dist/lyket.js?apiKey=pt_36cc7fb0432a9775894583cc8635d6"></script>
 </head>
 <body>
@@ -129,7 +135,7 @@
     <div class="content">
         <h1>☆ YUME Universe Labo ☆</h1>
         <h1>Καλώς ήρθατε στον κόσμο του σκότους.</h1>
-        
+
         <h2>News</h2>
         <p> 【2026.06.22】Αποφάσισα να κάνω βίντεο μία φορά την εβδομάδα.I decided to make videos once a week.動画作成は週一にした。</p>
         
@@ -146,20 +152,22 @@
 Weirdcore/Vaporwave sensibilities. Driven by Breakcore.
 ウィアードコア／ヴェイパーウェイヴの感性。ブレイクコアによって駆動する。</p>
         
-       <h2>Log</h2>
+        <h2>Log</h2>
         <p><a href="log.html">📁 View Log Archive (過去ログを見る)</a></p>
 
         <h2>Links</h2>
         <p><a href="https://www.youtube.com/@YUME_Abyss_Magick" target="_blank"> YUME Universe YouTubeチャンネル</a></p>
 
+        <!-- ─── サイトの最下部：カウンターと足跡ボタン ─── -->
         <div class="footer-gimmicks">
             
-            <!-- ① Hits カウンター -->
-<div class="hits-counter">
-    <span>RECORD / </span>
-    <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://yume-666-wav.github.io&count_bg=%23050505&title_bg=%23050505&title=hits&edge_flat=true" alt="Counter"/>
-</div>
+            <!-- ① Hits カウンター（URL指定を修正しました） -->
+            <div class="hits-counter">
+                <span>RECORD / </span>
+                <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://yume-666-wav.github.io&count_bg=%23050505&title_bg=%23050505&title=hits&edge_flat=true" alt="Counter"/>
+            </div>
 
+            <!-- ② Lyket 目玉足跡ボタン -->
             <div 
                 data-lyket-type="like" 
                 data-lyket-id="weirdcore-site-eye" 
