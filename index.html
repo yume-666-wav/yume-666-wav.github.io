@@ -38,11 +38,21 @@
             margin-bottom: 40px;
         }
 
+        /* シンボル画像のスタイリング */
+        .symbol-image {
+            width: 100%;
+            height: auto;
+            border: 1px solid #333333; /* うっすらと枠線をつけて基盤風に */
+            box-shadow: 0 0 20px rgba(255, 0, 255, 0.05); /* 瞳のマゼンタに合わせた極薄の光 */
+            margin-bottom: 40px;
+            display: block;
+        }
+
         /* 項目（自己紹介やブログなど）の小見出し */
         h2 {
             font-size: 1.1rem;
             font-weight: normal;
-            color: #999999; /* 項目名が見やすくなるよう少し明るく調整 */
+            color: #999999;
             margin-top: 40px;
             margin-bottom: 15px;
         }
@@ -56,13 +66,13 @@
 
         /* リンク（YouTubeへの動線、Logへのリンク） */
         a {
-            color: #888888; /* 暗すぎたグレーから、しっかり読める明るいグレーに変更 */
-            text-decoration: underline; /* リンクだと分かりやすいように下線を追加 */
+            color: #888888;
+            text-decoration: underline;
             text-underline-offset: 4px;
             transition: color 0.3s, text-shadow 0.3s;
         }
         a:hover {
-            color: #ffffff; /* カーソルを合わせた時だけ白く光る */
+            color: #ffffff;
             text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
         }
 
@@ -72,23 +82,17 @@
             margin-bottom: 40px;
             display: flex;
             flex-direction: column;
-            align-items: center; /* カウンターとボタンを中央に一列にする */
+            align-items: center;
             gap: 25px;
             width: 100%;
         }
 
-        /* Hitsカウンターのスタイリング */
+        /* カウンターのスタイリング */
         .hits-counter {
             font-size: 12px;
-            color: #666666; /* 識別しやすいように少し明るく */
+            color: #666666;
             letter-spacing: 0.1em;
             user-select: none;
-        }
-        .hits-counter img {
-            display: inline-block;
-            vertical-align: middle;
-            opacity: 0.8; /* 壊れた画像に見えないよう、数字の明るさをアップ */
-            filter: invert(1); /* 文字を白（グレー）系に反転 */
         }
 
         /* Lyketの透明な外枠が暴れないように固定 */
@@ -104,9 +108,9 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: rgba(255, 255, 255, 0.02); /* ほんの少しだけボタンの内側を明るく */
-            border: 1px solid #444444; /* 枠線をくっきりさせて認識しやすく */
-            color: #aaaaaa;            /* 文字や目玉の薄暗さを改善 */
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid #444444;
+            color: #aaaaaa;
             padding: 8px 16px;
             font-size: 13px;
             cursor: pointer;
@@ -127,7 +131,6 @@
             box-shadow: none;
         }
     </style>
-    <!-- Lyketを動作させるためのプログラム -->
     <script src="https://unpkg.com/@lyket/widget@latest/dist/lyket.js?apiKey=pt_36cc7fb0432a9775894583cc8635d6"></script>
 </head>
 <body>
@@ -135,6 +138,8 @@
     <div class="content">
         <h1>☆ YUME Universe Labo ☆</h1>
         <h1>Καλώς ήρθατε στον κόσμο του σκότους.</h1>
+        
+        <img src="main-visual.jpg" class="symbol-image" alt="YUME Universe Visual">
 
         <h2>News</h2>
         <p> 【2026.06.22】Αποφάσισα να κάνω βίντεο μία φορά την εβδομάδα.I decided to make videos once a week.動画作成は週一にした。</p>
@@ -147,7 +152,7 @@
   魔術師
 ☆ Είδος έκφρασης：
   ブレイクコア｜サイバーパンク｜ポスト・アポカリプス
-☆ Μια λέξη：
+☆ Μια λέクション：
 Χρησιμοποιώ το breakcore ως μέσο έκφρασης, αντλώντας παράλληλα από τις ευαισθησίες του Weirdcore και του Vaporwave.
 Weirdcore/Vaporwave sensibilities. Driven by Breakcore.
 ウィアードコア／ヴェイパーウェイヴの感性。ブレイクコアによって駆動する。</p>
@@ -158,15 +163,12 @@ Weirdcore/Vaporwave sensibilities. Driven by Breakcore.
         <h2>Links</h2>
         <p><a href="https://www.youtube.com/@YUME_Abyss_Magick" target="_blank"> YUME Universe YouTubeチャンネル</a></p>
 
-        <!-- ─── サイトの最下部：カウンターと足跡ボタン ─── -->
         <div class="footer-gimmicks">
             
-            <!-- ① Hits カウンター（URL指定を修正しました） -->
-<div class="hits-counter">
+            <div class="hits-counter">
                 <span>RECORD / </span>
                 <span id="live-counter" style="color: #666666; font-weight: bold;">000000</span>
                 <script>
-                    // URLの末尾に「/up」をつけて、アクセスごとにカウントアップさせます
                     fetch('https://api.counterapi.dev/v1/yume-666-wav/index/up')
                     .then(response => {
                         if (!response.ok) throw new Error();
@@ -182,7 +184,6 @@ Weirdcore/Vaporwave sensibilities. Driven by Breakcore.
                 </script>
             </div>
 
-            <!-- ② Lyket 目玉足跡ボタン -->
             <div 
                 data-lyket-type="like" 
                 data-lyket-id="weirdcore-site-eye" 
