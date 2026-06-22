@@ -15,7 +15,10 @@
             line-height: 1.8;
             letter-spacing: 0.05em;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            align-items: center; /* 全てを中央に集める */
+            justify-content: flex-start;
+            min-height: 100vh;
         }
 
         /* テキストを収める中央の枠 */
@@ -60,12 +63,106 @@
         a:hover {
             color: #ffffff; /* カーソルを合わせた時だけ白く光る */
         }
+
+        /* ─── ここから下を追加・修正しました ─── */
+
+        /* フッター・周辺ギミックの配置エリア */
+        .footer-gimmicks {
+            margin-top: 60px;
+            margin-bottom: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* カウンターとボタンを中央に一列にする */
+            gap: 25px;
+            width: 100%;
+        }
+
+        /* FC2カウンターの設置枠 */
+        .fc2-counter-area {
+            opacity: 0.7;
+            transition: opacity 0.3s;
+            display: inline-block;
+        }
+        .fc2-counter-area:hover {
+            opacity: 1;
+        }
+
+        /* Lyketの透明な外枠が暴れないように固定 */
+        [data-lyket-type="like"] {
+            display: inline-block !important;
+            width: auto !important;
+            max-width: max-content;
+            margin: 0 auto !important;
+        }
+
+        /* Lyket 目玉足跡ボタンのデザイン */
+        .lyket-eye-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: transparent;
+            border: 1px solid #333333;
+            color: #888888;
+            padding: 6px 14px;
+            font-size: 13px;
+            cursor: pointer;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+        .lyket-eye-button:hover {
+            border-color: #666666;
+            color: #ffffff;
+            box-shadow: 0 0 8px rgba(255, 255, 255, 0.1);
+        }
+        .lyket-eye-button[disabled] {
+            border-color: #222222;
+            color: #444444;
+            cursor: default;
+            box-shadow: none;
+        }
     </style>
-    <!-- Lyketを動作させるためのプログラム（あなたのトークンを埋め込んであります） -->
     <script src="https://unpkg.com/@lyket/widget@latest/dist/lyket.js?apiKey=pt_36cc7fb0432a9775894583cc8635d6"></script>
 </head>
 <body>
-<!-- ② Lyket 目玉足跡ボタン（クリックすると数字が増えます） -->
+
+    <div class="content">
+        <h1>☆ YUME Universe Labo ☆</h1>
+        <h1>Καλώς ήρθατε στον κόσμο του σκότους.</h1>
+        
+        <h2>News</h2>
+        <p> 【2026.06.22】Αποφάσισα να κάνω βίντεο μία φορά την εβδομάδα.I decided to make videos once a week.動画作成は週一にした。</p>
+        
+        <h2>About</h2>
+        <p> ―― ☆ αυτο-εισαγωγή ☆ ―― 
+☆ όνομα：
+  Σ will 666
+☆ Κατοχή：
+  魔術師
+☆ Είδος έκφρασης：
+  ブレイクコア｜サイバーパンク｜ポスト・アポカリプス
+☆ Μια λέξη：
+Χρησιμοποιώ το breakcore ως μέσο έκφρασης, αντλώντας παράλληλα από τις ευαισθησίες του Weirdcore και του Vaporwave.
+Weirdcore/Vaporwave sensibilities. Driven by Breakcore.
+ウィアードコア／ヴェイパーウェイヴの感性。ブレイクコアによって駆動する。</p>
+        
+        <h2>Log</h2>
+        <p> 【2026.06.23】
+更新予定            
+ 【2026.06.22】
+Συμμάζεψα τον κήπο. Πήγα στο δημαρχείο. Σκέφτηκα ότι η δημιουργία βίντεο μία φορά την εβδομάδα θα ήταν λιγότερο κουραστική.
+I tidied up the garden. I went to city hall. I thought that creating videos once a week would be less of a burden.
+私は庭を片付けた。私は市役所に行った。私は動画作成は週一の方が負担が少ないと思った。</p>
+
+        <h2>Links</h2>
+        <p><a href="https://www.youtube.com/@YUME_Abyss_Magick" target="_blank"> YUME Universe YouTubeチャンネル</a></p>
+
+        <div class="footer-gimmicks">
+            
+            <div class="fc2-counter-area">
+                [ COUNTER ]
+            </div>
+
             <div 
                 data-lyket-type="like" 
                 data-lyket-id="weirdcore-site-eye" 
@@ -76,37 +173,9 @@
                     <span data-lyket-value>0</span>
                 </button>
             </div>
-    <div class="content">
-        <h1>☆　YUME Universe Labo　☆</h1>
-        <h1>Καλώς ήρθατε στον κόσμο του σκότους.</h1>
-        <h2>News</h2>
-        <p>　【2026.06.22】Αποφάσισα να κάνω βίντεο μία φορά την εβδομάδα.I decided to make videos once a week.動画作成は週一にした。
-        </p>
-        <h2>About</h2>
-        <p>　――　☆　αυτο-εισαγωγή　☆　―― 
-☆　όνομα：
-　　Σ　will　666
-☆　Κατοχή：
-　　魔術師
-☆　Είδος έκφρασης：
-　　ブレイクコア｜サイバーパンク｜ポスト・アポカリプス
-☆　Μια λέξη：
-Χρησιμοποιώ το breakcore ως μέσο έκφρασης, αντλώντας παράλληλα από τις ευαισθησίες του Weirdcore και του Vaporwave.
-Weirdcore/Vaporwave sensibilities. Driven by Breakcore.
-ウィアードコア／ヴェイパーウェイヴの感性。ブレイクコアによって駆動する。
-        </p>
-        <h2>Log</h2>
-        <p>　【2026.06.23】
-更新予定            
-　【2026.06.22】
-Συμμάζεψα τον κήπο. Πήγα στο δημαρχείο. Σκέφτηκα ότι η δημιουργία βίντεο μία φορά την εβδομάδα θα ήταν λιγότερο κουραστική.
-I tidied up the garden. I went to city hall. I thought that creating videos once a week would be less of a burden.
-私は庭を片付けた。私は市役所に行った。私は動画作成は週一の方が負担が少ないと思った。
-</p>
 
-        <h2>Links</h2>
-        <p><a href="https://www.youtube.com/@YUME_Abyss_Magick" target="_blank"> YUME Universe YouTubeチャンネル</a>
-        </p>
+        </div>
+
     </div>
 
 </body>
