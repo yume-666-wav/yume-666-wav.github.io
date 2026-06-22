@@ -61,9 +61,21 @@
             color: #ffffff; /* カーソルを合わせた時だけ白く光る */
         }
     </style>
+    <!-- Lyketを動作させるためのプログラム（あなたのトークンを埋め込んであります） -->
+    <script src="https://unpkg.com/@lyket/widget@latest/dist/lyket.js?apiKey=pt_36cc7fb0432a9775894583cc8635d6"></script>
 </head>
 <body>
-
+<!-- ② Lyket 目玉足跡ボタン（クリックすると数字が増えます） -->
+            <div 
+                data-lyket-type="like" 
+                data-lyket-id="weirdcore-site-eye" 
+                data-lyket-template="custom"
+            >
+                <button class="lyket-eye-button">
+                    <span>👁️ 気配を遺す :</span>
+                    <span data-lyket-value>0</span>
+                </button>
+            </div>
     <div class="content">
         <h1>☆　YUME Universe Labo　☆</h1>
         <h1>Καλώς ήρθατε στον κόσμο του σκότους.</h1>
