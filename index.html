@@ -166,19 +166,17 @@ Weirdcore/Vaporwave sensibilities. Driven by Breakcore.
                 <span>RECORD / </span>
                 <span id="live-counter" style="color: #666666; font-weight: bold;">000000</span>
                 <script>
-                    // 確実にデータを取得できるURLと構造に修正しました
-                    fetch('https://api.counterapi.dev/v1/yume-666-wav/index')
+                    // URLの末尾に「/up」をつけて、アクセスごとにカウントアップさせます
+                    fetch('https://api.counterapi.dev/v1/yume-666-wav/index/up')
                     .then(response => {
                         if (!response.ok) throw new Error();
                         return response.json();
                     })
                     .then(data => {
-                        // カウンターの数字（count）を正しく取得して6桁に整形
                         const count = String(data.count);
                         document.getElementById('live-counter').innerText = count.padStart(6, '0');
                     })
                     .catch(() => {
-                        // 万が一の通信エラー時は、000000のまま静かに佇ませる
                         document.getElementById('live-counter').innerText = "000000";
                     });
                 </script>
