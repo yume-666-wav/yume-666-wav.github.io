@@ -166,17 +166,20 @@ Weirdcore/Vaporwave sensibilities. Driven by Breakcore.
                 <span>RECORD / </span>
                 <span id="live-counter" style="color: #666666; font-weight: bold;">000000</span>
                 <script>
-                    // 外部の軽量データサーバーから純粋な数字だけを取得するプログラム
-                    fetch('https://api.counterapi.dev/v1/yume-666-wav/index/up')
-                    .then(response => response.json())
+                    // 確実にデータを取得できるURLと構造に修正しました
+                    fetch('https://api.counterapi.dev/v1/yume-666-wav/index')
+                    .then(response => {
+                        if (!response.ok) throw new Error();
+                        return response.json();
+                    })
                     .then(data => {
-                        // 数字を6桁の無機質な形式（例: 000005）に整えて画面に打ち込む
-                        const count = String(data.value);
+                        // カウンターの数字（count）を正しく取得して6桁に整形
+                        const count = String(data.count);
                         document.getElementById('live-counter').innerText = count.padStart(6, '0');
                     })
                     .catch(() => {
-                        // 万が一のための予備表示
-                        document.getElementById('live-counter').innerText = "000001";
+                        // 万が一の通信エラー時は、000000のまま静かに佇ませる
+                        document.getElementById('live-counter').innerText = "000000";
                     });
                 </script>
             </div>
