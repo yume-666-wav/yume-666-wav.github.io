@@ -164,23 +164,21 @@ Weirdcore/Vaporwave sensibilities. Driven by Breakcore.
             <!-- ① Hits カウンター（URL指定を修正しました） -->
 <div class="hits-counter">
                 <span>RECORD / </span>
+                <span id="live-counter" style="color: #666666; font-weight: bold;">000000</span>
                 <script>
-                    // 訪問数を計算して文字として画面に直接書き出すプログラム
-                    fetch('https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://yume-666-wav.github.io&count_bg=%23050505&title_bg=%23050505')
-                    .then(response => response.text())
+                    // 外部の軽量データサーバーから純粋な数字だけを取得するプログラム
+                    fetch('https://api.counterapi.dev/v1/yume-666-wav/index/up')
+                    .then(response => response.json())
                     .then(data => {
-                        // 読み込んだデータから数字だけを抜き出す処理
-                        const match = data.match(/<text[^>]*>(\d+)<\/text>/);
-                        const count = match ? match[1] : "000000";
-                        // 6桁の無機質な数字（例: 000042）に整形して表示
+                        // 数字を6桁の無機質な形式（例: 000005）に整えて画面に打ち込む
+                        const count = String(data.value);
                         document.getElementById('live-counter').innerText = count.padStart(6, '0');
                     })
                     .catch(() => {
-                        // 万が一エラーが起きても不気味なダミー数字を出して世界観を守る
-                        document.getElementById('live-counter').innerText = "000404";
+                        // 万が一のための予備表示
+                        document.getElementById('live-counter').innerText = "000001";
                     });
                 </script>
-                <span id="live-counter" style="color: #666666; font-weight: bold;">Loading...</span>
             </div>
 
             <!-- ② Lyket 目玉足跡ボタン -->
