@@ -162,9 +162,25 @@ Weirdcore/Vaporwave sensibilities. Driven by Breakcore.
         <div class="footer-gimmicks">
             
             <!-- ① Hits カウンター（URL指定を修正しました） -->
-            <div class="hits-counter">
+<div class="hits-counter">
                 <span>RECORD / </span>
-                <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://yume-666-wav.github.io&count_bg=%23050505&title_bg=%23050505&title=hits&edge_flat=true" alt="Counter"/>
+                <script>
+                    // 訪問数を計算して文字として画面に直接書き出すプログラム
+                    fetch('https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://yume-666-wav.github.io&count_bg=%23050505&title_bg=%23050505')
+                    .then(response => response.text())
+                    .then(data => {
+                        // 読み込んだデータから数字だけを抜き出す処理
+                        const match = data.match(/<text[^>]*>(\d+)<\/text>/);
+                        const count = match ? match[1] : "000000";
+                        // 6桁の無機質な数字（例: 000042）に整形して表示
+                        document.getElementById('live-counter').innerText = count.padStart(6, '0');
+                    })
+                    .catch(() => {
+                        // 万が一エラーが起きても不気味なダミー数字を出して世界観を守る
+                        document.getElementById('live-counter').innerText = "000404";
+                    });
+                </script>
+                <span id="live-counter" style="color: #666666; font-weight: bold;">Loading...</span>
             </div>
 
             <!-- ② Lyket 目玉足跡ボタン -->
